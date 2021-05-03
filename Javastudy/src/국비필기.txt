@@ -1,0 +1,3 @@
+FileInputStream - 1byte씩 리턴받음
+InputStreamReader가 2byte로 조합
+BufferedReader가 최종적으로 조합

@@ -1,0 +1,5 @@
+package abc;
+
+public class MyThread1 extends Thread {
+
+}

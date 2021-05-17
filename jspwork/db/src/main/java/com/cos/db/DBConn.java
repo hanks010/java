@@ -13,7 +13,7 @@ public class DBConn {
 		
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");// 외부 파일 연결, 고정값
-			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle"); // web.xml이 참조하고 있는 이름과 같아야 함
+			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle"); 	// web.xml이 참조하고 있는 이름과 같아야 함
 			Connection conn = ds.getConnection();
 			System.out.println("DB 연결성공");
 			return conn;

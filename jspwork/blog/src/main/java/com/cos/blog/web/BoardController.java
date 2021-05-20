@@ -35,14 +35,16 @@ public class BoardController extends HttpServlet {
 			return;
 		}
 		String cmd = request.getParameter("cmd");
-		
-		//httpL//localhost:8000/blog/board?cmd=home
+		router(cmd);
+	}
 
-		if (cmd.equals("home")) { //메인페이지 
+	// httpL//localhost:8000/blog/board?cmd=home
+	private void router(String cmd) {
+		if (cmd.equals("home")) { // 메인페이지
 
-		} else if (cmd.equals("detail")) {// 게시글 상세보기 
+		} else if (cmd.equals("detail")) {// 게시글 상세보기
 
-		} else if (cmd.equals("delete")) { 
+		} else if (cmd.equals("delete")) {
 
 		} else if (cmd.equals("updateForm")) {
 
@@ -52,11 +54,9 @@ public class BoardController extends HttpServlet {
 
 		} else if (cmd.equals("save")) {
 
-		}else if (cmd.equals("search")) {
+		} else if (cmd.equals("search")) {
 
 		}
-
-
 	}
 
 }

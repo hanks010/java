@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cos.blog.service.Action;
+import com.cos.blog.service.user.JoinAction;
+import com.cos.blog.service.user.JoinFormAction;
+
 //http://localhost:8000/blog/UserController -> http://localhost:8000/blog/user
 @WebServlet("/user")
 public class UserController extends HttpServlet {
@@ -36,12 +40,18 @@ public class UserController extends HttpServlet {
 			return;
 		}
 		String cmd = request.getParameter("cmd");
+		Action action = router(cmd);
+		if(action != null) {
+			action.execute(request, response); //다형성, 안의 객체가 어떤지에 따라 자식 객체의 것이 실행됨
+		}
+	}
 
+	private Action router(String cmd) {
 		if (cmd.equals("joinForm")) { // 조인폼태그 페이지를 달라 //form 적혀있으면 sendRedirect
-
-		} else if (cmd.equals("join")) {// 로그인폼 태그 페이지를 달라
-
-		} else if (cmd.equals("loginForm")) {
+			return new JoinFormAction(); // 다른 클래스에 위임하고 리턴 받는다 -> 팩토리 패턴
+		} else if (cmd.equals("join")) { // 분기시켜서 일을 처리
+			return new JoinAction();
+		} else if (cmd.equals("loginForm")) { // 로그인폼 태그 페이지를 달라
 
 		} else if (cmd.equals("login")) {
 
@@ -54,7 +64,7 @@ public class UserController extends HttpServlet {
 		} else if (cmd.equals("logout")) {
 
 		}
-
+		return null;
 	}
 
 }

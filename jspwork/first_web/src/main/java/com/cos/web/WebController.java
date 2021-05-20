@@ -3,7 +3,9 @@ package com.cos.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.jws.WebService;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,6 +40,7 @@ public class WebController extends HttpServlet {
 		resp.setHeader("hello","haha"); //프로토콜이 없어서 새로운 키값을 만들어도 브라우저(응답자)가 이해하기 어렵다, 무시한다
 						//키값, 데이터값
 						//브라우저는 프로토콜을 지켜서 읽는다
+		resp.setHeader("ya","mohe");
 		out.println("<html>");
 		out.println("<html>");
 		out.println("<h1>한글"+num+"</h1>");

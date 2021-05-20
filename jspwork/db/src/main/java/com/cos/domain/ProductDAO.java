@@ -92,12 +92,14 @@ public class ProductDAO { // Data Access Object
 	}
 
 	public int 상품한건수정하기(int id, String name, int price) {
+		//%사용하려면%
+		//name = %'app'%
 		String sql = "UPDATE product SET name =?, price=? WHERE id =?";
 		try {
 			Connection conn = DBConn.디비연결();
 
 			PreparedStatement pstmt = conn.prepareStatement(sql); // 프로토콜이 적용된 버퍼
-			pstmt.setString(1, name);
+			pstmt.setString(1, name); //"%"+name+"%"
 			pstmt.setInt(2, price);
 			pstmt.setInt(3, id);
 

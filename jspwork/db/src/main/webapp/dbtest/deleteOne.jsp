@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
     <%
     ProductDAO p = new ProductDAO();
-    int result = p.상품한건삭제하기(1);
+    int result = p.상품한건삭제하기(7);
    	pageContext.setAttribute("result", result);
     %>
 <!DOCTYPE html>

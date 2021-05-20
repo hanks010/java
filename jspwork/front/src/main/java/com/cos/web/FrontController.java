@@ -30,8 +30,8 @@ public class FrontController extends HttpServlet {
 
 	public void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
 		System.out.println(request.getMethod() + "요청 옴: " + request.getRequestURI());
-
 		String cmd = request.getParameter("cmd"); // QueryString, x-www-form-urlencoded (Key=Value)
 		System.out.println("cmd: " + cmd);
 			
@@ -45,11 +45,11 @@ public class FrontController extends HttpServlet {
 			if(request.getParameter("cmd")==null){
 				return;
 			}
-			if (cmd.equals("a")) {
+			if (cmd.equals("a")) { //.equals는 String 객체의 메소드이기 때문에 null값인 경우 사용할 수 없다.
 				response.sendRedirect("a.jsp");
 			}
 			else if (cmd.equals("b")) {
-				response.sendRedirect("b.jsp");
+				response.sendRedirect("b.jsp"); 
 			}
 			else if (cmd.equals("c")) {
 				int money = 10000;
@@ -58,7 +58,7 @@ public class FrontController extends HttpServlet {
 				RequestDispatcher dis = request.getRequestDispatcher("c.jsp");
 				dis.forward(request, response);
 			}
-			else { //널이거나 공백,cmd=asdfs
+			else { //공백,cmd=asdfs
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('Bad Request')");

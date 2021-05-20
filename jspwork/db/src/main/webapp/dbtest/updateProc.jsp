@@ -6,6 +6,11 @@
     int id = Integer.parseInt(request.getParameter("id"));
     String name = request.getParameter("name");
     int price = Integer.parseInt(request.getParameter("price"));
+    
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(price);
+    
 	ProductDAO p = new ProductDAO();
     //DB 연결해서 UPDATE 하고 Result값 받아서 출력하기
     int result = p.상품한건수정하기(id, name, price);

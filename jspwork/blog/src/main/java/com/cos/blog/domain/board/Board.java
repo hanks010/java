@@ -3,15 +3,15 @@ package com.cos.blog.domain.board;
 import java.sql.Timestamp;
 
 public class Board { // N, 1 ->외래키 존재
-	private int id; //Primary Key, Sequence
+	private Integer id; //Primary Key, Sequence
 	private String title;
 	private String content;
 	private Timestamp created; 
-	private int userId;
+	private Integer userId;
 	
 	Board(){};
 	
-	public Board(int id, String title, String content, Timestamp created, int userId) {
+	public Board(Integer id, String title, String content, Timestamp created, Integer userId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -21,10 +21,10 @@ public class Board { // N, 1 ->외래키 존재
 	}
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -45,10 +45,10 @@ public class Board { // N, 1 ->외래키 존재
 	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 

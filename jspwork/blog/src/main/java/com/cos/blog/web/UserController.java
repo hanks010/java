@@ -50,7 +50,8 @@ public class UserController extends HttpServlet {
 			action.execute(request, response); // 다형성, 안의 객체가 어떤지에 따라 자식 객체의 것이 실행됨
 		}
 	}
-	//router에게 객체 생성을 위임하고 결과를 응답받음 (팩토리 패턴)
+
+	// router에게 객체 생성을 위임하고 결과를 응답받음 (팩토리 패턴)
 	private Action router(String cmd) {
 		if (cmd.equals("joinForm")) { // 조인폼태그 페이지를 달라 //form 적혀있으면 sendRedirect
 			return new JoinFormAction(); // 다른 클래스에 위임하고 리턴 받는다 -> 팩토리 패턴

@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			System.out.println("널값");
 			out.println("<script>");
-			out.println("alert('null값')");
+			out.println("alert('null값');");
 			out.println("</script>");
 			return;
 		} else if (id.equals("a")) {

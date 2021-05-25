@@ -15,8 +15,7 @@ public class JoinFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	// TODO Auto-generated method stub
-		
+		response.sendRedirect("views/user/joinForm.jsp"); //sendredirect, 디스패쳐 모두 jsp 파일을 찾음, 디폴트 경로가 wepapp
 	}
 
 }

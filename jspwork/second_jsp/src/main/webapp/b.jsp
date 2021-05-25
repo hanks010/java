@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>인덱스 페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
-
+<h1>b.jsp</h1>
 </body>
 </html>

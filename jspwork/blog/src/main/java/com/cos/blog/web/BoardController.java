@@ -64,9 +64,10 @@ public class BoardController extends HttpServlet {
 			return new updateFormAction();
 		} else if (cmd.equals("update")) {
 			return new updateAction();
-		} else if (cmd.equals("saveForm")) {
+		} else if (cmd.equals("saveForm")) { //글쓰기 화면 액션 가기(세션이 있는지 검증), 
 			return new saveFormAction();
-		} else if (cmd.equals("save")) {
+		} else if (cmd.equals("save")) {  //액션 만들어서 saveAction => title, content 받아서 DB에 save하기
+										  //이미지로 들어와도 post로 받을 때는 모두 String으로 받아온다. 그대로 DB에 넣으면 된다.
 			return new saveAction();
 		} else if (cmd.equals("search")) {
 			return new searchAction();

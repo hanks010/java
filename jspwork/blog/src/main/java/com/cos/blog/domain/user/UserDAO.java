@@ -15,6 +15,7 @@ public class UserDAO implements CrudDAO<User>{
 	//싱글톤 패턴, 스프링은 다 싱글톤
 	//객체는 하나만 생성해 둔 뒤 사용, 새로 생성 불가, 딱 하나만 필요할 때 사용
 	
+	//static이기 때문에 바로 메모리에 뜨고 instance 객체를 한 번 밖에 못 띄움
 	private static UserDAO instance = new UserDAO();
 	private UserDAO() {}
 	public static UserDAO getInstance() {
@@ -22,7 +23,7 @@ public class UserDAO implements CrudDAO<User>{
 	}
 	
 	public User findByUsernameAndPassword(String username, String password) {
-		User user = new User();
+		User user = new User(); //DB에서 조회한 후 동기화시키기 위한 객체 선언 
 		String sql = "SELECT id,username,email,address,created FROM users WHERE username =? AND password=?"; //where절에 콤마 안 
 		//세션은 서버 메모리에 떠 있는데 서버 메모리 공간은 db처럼 안전하지 않다 =>password는 담으면 안됨
 		try {
@@ -38,7 +39,8 @@ public class UserDAO implements CrudDAO<User>{
 			user.setUsername(rs.getString("username"));
 			user.setEmail(rs.getString("email"));
 			user.setAddress(rs.getString("address"));
-			user.setCreated(rs.getTimestamp("created")); //아이디 비번 말고 나머지도 다 채워넣어야 함
+			user.setCreated(rs.getTimestamp("created")); 
+			//아이디 비번으로 유저 객체가 있는지 없는지 체크할 뿐 아니라 나머지도 다 채워넣어야 함=>객체를 세션에 넣어야 하기 때문 
 			return user;
 		}
 		}catch(Exception e) {
@@ -65,14 +67,14 @@ public class UserDAO implements CrudDAO<User>{
 		String sql = "INSERT INTO users(ID, USERNAME, PASSWORD, EMAIL, ADDRESS, CREATED) VALUES(USER_SEQ.NEXTVAL,?,?,?,?,SYSDATE)";
 
 		// TimeStamp 타입 ->DB에 넣을 수 있음
-		LocalDateTime.now();
-		// Timestamp now = Timestamp.valueOf(LocalDateTime.now()); //현재시간 구하는 법
+		//LocalDateTime.now();
+		// Timestamp now = Timestamp.valueOf(LocalDateTime.now()); //DB에 넣을 현재시간 구하는 법
 
 		try {
 			Connection conn = DBConn.DBConnect();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
-			User user = (User) data; // data의 타입이 아직 결정되지 않았기 때문에 다운캐스팅을 해줘야 함
+			User user = data; // (원래는 제네릭 썼음) data의 타입이 아직 결정되지 않았기 때문에 다운캐스팅을 해줘야 함
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getPassword());
 			pstmt.setString(3, user.getEmail());

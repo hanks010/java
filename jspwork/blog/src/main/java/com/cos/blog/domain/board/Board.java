@@ -9,7 +9,7 @@ public class Board { // N, 1 ->외래키 존재
 	private Timestamp created; 
 	private Integer userId;
 	
-	Board(){};
+	public Board(){};
 	
 	public Board(Integer id, String title, String content, Timestamp created, Integer userId) {
 		super();

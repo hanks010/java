@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.cos.blog.config.DBConn;
 import com.cos.blog.domain.board.Board;
 import com.cos.blog.domain.user.User;

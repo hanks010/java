@@ -21,7 +21,7 @@ public class ValidationHandler {
 		//e.hasMoreElements()를 한 번 돌면 두 번째는 실행이 안됨
 		while (e.hasMoreElements()) {
 			String key = e.nextElement();
-			if (key.equals("cmd")) {
+			if (key.equals("cmd") || key.equals("files")) {
 				continue;
 			}
 			if (keys.contains(key) == false) { //정확하지 않은 키 값일 때 

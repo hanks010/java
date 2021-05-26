@@ -17,7 +17,12 @@ public class Script {
 		//location.href ="" -> contextPath부터 적어줘야함
 		//response.sendRedirect("views/user/joinForm.jsp");
 	}
-	public static void href(){
-		
+	public static void href(String msg/*String url 이걸 추가해줘야 여러 군데에서 사용 */, HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter(); 
+		out.println("<script> ");
+		out.println("alert('"+msg+"');"); 
+		out.println("location.href='blog/views/user/loginForm.jsp");
+		out.println("</script> ");
 	}
 }
